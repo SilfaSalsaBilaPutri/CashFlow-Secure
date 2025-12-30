@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design System
+  Semua warna menggunakan HSL
+*/
+
+@layer base {
+  :root {
+    /* Core colors */
+    --background: 40 30% 97%;
+    --foreground: 25 30% 15%;
+
+    --card: 40 40% 99%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 40 40% 99%;
+    --popover-foreground: 25 30% 15%;
+
+    --primary: 28 85% 55%;
+    --primary-foreground: 40 40% 99%;
+
+    --secondary: 35 40% 92%;
+    --secondary-foreground: 25 30% 20%;
+
+    --muted: 35 20% 90%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 145 50% 45%;
+    --accent-foreground: 40 40% 99%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 40 40% 99%;
+
+    /* UI tokens */
+    --border: 35 25% 85%;
+    --input: 35 25% 85%;
+    --ring: 28 85% 55%;
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 35 30% 95%;
+    --sidebar-foreground: 25 30% 20%;
+    --sidebar-primary: 28 85% 55%;
+    --sidebar-primary-foreground: 40 40% 99%;
+    --sidebar-accent: 35 35% 90%;
+    --sidebar-accent-foreground: 25 30% 20%;
+    --sidebar-border: 35 25% 85%;
+    --sidebar-ring: 28 85% 55%;
+
+    /* Status */
+    --success: 145 50% 45%;
+    --success-foreground: 40 40% 99%;
+    --warning: 45 90% 50%;
+    --warning-foreground: 25 30% 15%;
+
+    /* Effects */
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(28 85% 55%) 0%,
+      hsl(35 80% 60%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(40 40% 99%) 0%,
+      hsl(35 35% 96%) 100%
+    );
+    --shadow-warm: 0 4px 20px -4px hsl(28 85% 55% / 0.25);
+    --shadow-card: 0 2px 12px -2px hsl(25 30% 15% / 0.08);
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 35 30% 95%;
+
+    --card: 25 20% 14%;
+    --card-foreground: 35 30% 95%;
+
+    --popover: 25 20% 14%;
+    --popover-foreground: 35 30% 95%;
+
+    --primary: 28 85% 55%;
+    --primary-foreground: 25 25% 10%;
+
+    --secondary: 25 20% 20%;
+    --secondary-foreground: 35 30% 95%;
+
+    --muted: 25 15% 22%;
+    --muted-foreground: 35 20% 60%;
+
+    --accent: 145 50% 45%;
+    --accent-foreground: 25 25% 10%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 35 30% 95%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 28 85% 55%;
+
+    --sidebar-background: 25 20% 12%;
+    --sidebar-foreground: 35 30% 95%;
+    --sidebar-primary: 28 85% 55%;
+    --sidebar-primary-foreground: 25 25% 10%;
+    --sidebar-accent: 25 15% 18%;
+    --sidebar-accent-foreground: 35 30% 95%;
+    --sidebar-border: 25 15% 22%;
+    --sidebar-ring: 28 85% 55%;
+
+    --success: 145 50% 45%;
+    --success-foreground: 25 25% 10%;
+    --warning: 45 90% 50%;
+    --warning-foreground: 25 25% 10%;
+
+    --gradient-warm: linear-gradient(
+      135deg,
+      hsl(28 85% 55%) 0%,
+      hsl(35 80% 60%) 100%
+    );
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(25 20% 14%) 0%,
+      hsl(25 18% 12%) 100%
+    );
+    --shadow-warm: 0 4px 20px -4px hsl(28 85% 55% / 0.3);
+    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.3);
+  }
+
+  /* Global base styles */
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
