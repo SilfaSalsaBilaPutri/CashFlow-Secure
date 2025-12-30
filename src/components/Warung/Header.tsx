@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { UtensilsCrossed, Users } from "lucide-react";
+import { UtensilsCrossed, Users, LogIn, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 export function Header() {
+  const { user, signOut } = useAuth();
+
   return (
     <header className="gradient-warm shadow-warm">
       <div className="container mx-auto px-4 py-6">
@@ -20,12 +23,34 @@ export function Header() {
               </p>
             </div>
           </div>
-          <Link to="/admin">
-            <Button variant="secondary" size="sm" className="gap-2">
-              <Users className="h-4 w-4" />
-              <span className="hidden sm:inline">Admin Panel</span>
-            </Button>
-          </Link>
+          <div className="flex items-center gap-2">
+            {user ? (
+              <>
+                <Link to="/admin">
+                  <Button variant="secondary" size="sm" className="gap-2">
+                    <Users className="h-4 w-4" />
+                    <span className="hidden sm:inline">Admin Panel</span>
+                  </Button>
+                </Link>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="gap-2"
+                  onClick={signOut}
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Logout</span>
+                </Button>
+              </>
+            ) : (
+              <Link to="/auth">
+                <Button variant="secondary" size="sm" className="gap-2">
+                  <LogIn className="h-4 w-4" />
+                  <span className="hidden sm:inline">Login</span>
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </header>
